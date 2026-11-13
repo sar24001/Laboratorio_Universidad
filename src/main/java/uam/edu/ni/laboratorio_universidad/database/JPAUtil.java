@@ -29,7 +29,7 @@ public class JPAUtil {
             );
 
             emf = Persistence.createEntityManagerFactory(
-                    "laboratorioPU",
+                    "bd_laboratorio_orm",
                     propiedades
             );
         }
