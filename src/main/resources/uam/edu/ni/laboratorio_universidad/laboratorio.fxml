@@ -1,0 +1,179 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="uam.edu.ni.laboratorio_universidad.controller.LaboratorioController"
+      alignment="TOP_CENTER"
+      spacing="15"
+      prefWidth="1050"
+      prefHeight="650">
+
+    <padding>
+        <Insets top="20" right="20"
+                bottom="20" left="20"/>
+    </padding>
+
+    <!-- TÍTULO -->
+    <Label text="Control de equipos de laboratorio"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <!-- FORMULARIO -->
+    <GridPane hgap="12" vgap="12">
+
+        <Label text="Código:"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="0"/>
+
+        <TextField fx:id="txtCodigo"
+                   promptText="Código del equipo"
+                   prefWidth="250"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"/>
+
+        <Label text="Nombre:"
+               GridPane.columnIndex="2"
+               GridPane.rowIndex="0"/>
+
+        <TextField fx:id="txtNombre"
+                   promptText="Nombre del equipo"
+                   prefWidth="250"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="0"/>
+
+        <Label text="Marca:"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="1"/>
+
+        <TextField fx:id="txtMarca"
+                   promptText="Marca del equipo"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Cantidad:"
+               GridPane.columnIndex="2"
+               GridPane.rowIndex="1"/>
+
+        <TextField fx:id="txtCantidad"
+                   promptText="Cantidad disponible"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Tipo:"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="2"/>
+
+        <ComboBox fx:id="cmbTipoEquipo"
+                  promptText="Seleccione un tipo"
+                  maxWidth="Infinity"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="2"/>
+
+        <Label text="Estado:"
+               GridPane.columnIndex="2"
+               GridPane.rowIndex="2"/>
+
+        <ComboBox fx:id="cmbEstado"
+                  promptText="Seleccione un estado"
+                  maxWidth="Infinity"
+                  GridPane.columnIndex="3"
+                  GridPane.rowIndex="2"/>
+
+    </GridPane>
+
+    <!-- BOTONES CRUD -->
+    <HBox alignment="CENTER" spacing="12">
+
+        <Button text="Guardar"
+                onAction="#guardarEquipo"
+                prefWidth="110"/>
+
+        <Button fx:id="btnActualizar"
+                text="Actualizar"
+                onAction="#actualizarEquipo"
+                disable="true"
+                prefWidth="110"/>
+
+        <Button fx:id="btnEliminar"
+                text="Eliminar"
+                onAction="#eliminarEquipo"
+                disable="true"
+                prefWidth="110"/>
+
+        <Button text="Limpiar"
+                onAction="#limpiarFormulario"
+                prefWidth="110"/>
+
+        <Button text="Listar"
+                onAction="#listarEquipos"
+                prefWidth="110"/>
+
+    </HBox>
+
+    <Separator/>
+
+    <!-- BÚSQUEDA Y FILTROS -->
+    <Label text="Búsqueda de equipos"
+           style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+
+        <Label text="Nombre:"/>
+
+        <TextField fx:id="txtBuscarNombre"
+                   promptText="Buscar por nombre"
+                   prefWidth="260"/>
+
+        <Label text="Tipo:"/>
+
+        <ComboBox fx:id="cmbFiltroTipo"
+                  promptText="Todos los tipos"
+                  prefWidth="200"/>
+
+        <Button text="Buscar"
+                onAction="#buscarEquipos"
+                prefWidth="110"/>
+
+    </HBox>
+
+    <!-- TABLA DE EQUIPOS -->
+    <TableView fx:id="tblEquipos"
+               VBox.vgrow="ALWAYS">
+
+        <columns>
+            <TableColumn fx:id="colCodigo"
+                         text="Código"
+                         prefWidth="120"/>
+
+            <TableColumn fx:id="colNombre"
+                         text="Nombre"
+                         prefWidth="200"/>
+
+            <TableColumn fx:id="colMarca"
+                         text="Marca"
+                         prefWidth="150"/>
+
+            <TableColumn fx:id="colEstado"
+                         text="Estado"
+                         prefWidth="180"/>
+
+            <TableColumn fx:id="colCantidad"
+                         text="Cantidad"
+                         prefWidth="100"/>
+
+            <TableColumn fx:id="colTipo"
+                         text="Tipo de equipo"
+                         prefWidth="200"/>
+        </columns>
+
+        <placeholder>
+            <Label text="No hay equipos para mostrar"/>
+        </placeholder>
+
+    </TableView>
+
+</VBox>
